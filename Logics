@@ -4,7 +4,8 @@ Logics
 */
 
 // if statements
-var lightState = "gibberish";
+//var lightState = "gibberish";
+var lightState = "green";
 
 if (lightState == "green")
 {
@@ -30,4 +31,11 @@ while (counter > 0)
     console.log(counter);
     counter --;
 }
-console.log("Happy New Year!")
+console.log("Blast Off!")
+
+// for loops
+var planetsLis = ["Mercury", "Venus", "Earth", "Mars","Jupiter", "Saturn", "Uranus","Neptune"] 
+for (var i = 0; i < planetsLis.length; i++ )
+{
+    console.log(planetsLis[i]);
+}
