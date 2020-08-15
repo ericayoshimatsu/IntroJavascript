@@ -1,0 +1,33 @@
+/* ------------------------
+Logics
+---------------------------
+*/
+
+// if statements
+var lightState = "gibberish";
+
+if (lightState == "green")
+{
+    console.log("Go!");
+}
+else if (lightState == "red")
+{
+    console.log("Stop!");
+}
+else
+{
+    console.log("Uat?")
+}
+
+console.log("end");
+
+
+// while loops
+console.log("Countdown:")
+var counter = 10;
+while (counter > 0)
+{
+    console.log(counter);
+    counter --;
+}
+console.log("Happy New Year!")
