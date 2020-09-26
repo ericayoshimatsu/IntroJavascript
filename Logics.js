@@ -39,3 +39,28 @@ for (var i = 0; i < planetsLis.length; i++ )
 {
     console.log(planetsLis[i]);
 }
+
+// Control Statements
+// Break
+
+var isGameOver = false;
+let endPos = 5;
+var xPos = 0;
+var enemyPos = 4;
+
+while (xPos < endPos) {
+    xPos++
+    console.log("pos = " + xPos);
+    if (xPos == enemyPos) {
+        console.log("Wasted");
+        break;
+    }
+}
+
+// forEach
+var finalString = "the planets on the solar system are: "
+
+planetsLis.forEach(function(planetName){
+    finalString += planetName + " ";
+});
+console.log(finalString);
