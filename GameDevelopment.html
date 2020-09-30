@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Crossing Game</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style type="text/css">
+        canvas {
+            border: 2px solid black;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crossing Game</h1>
+    <canvas id='myCanvas' width='700' height='500'></canvas>
+    <script type="text/javascript">
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        
+        let screenWidth = 700;
+        let screenHeight = 500;
+
+        class GameCharacter {
+            constructor (x,y,width,height,color){
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height
+                this.color = color;
+            }
+        }
+
+        var rectangle = new GameCharacter(50,50,50,50,"rgb(0,0,255)");
+
+        var draw = function() {
+            // clear canvas
+            ctx.clearRect(0,0,screenWidth,screenHeight);
+            // fill canvas
+            ctx.fillStyle = rectangle.color;
+            ctx.fillRect(rectangle.x,rectangle.y,rectangle.width,rectangle.height)
+        }
+
+        var step = function() {
+            draw();
+            window.requestAnimationFrame(step);
+        }
+
+        step();
+
+    </script>
+</body>
+</html>
