@@ -24,27 +24,71 @@
         let screenWidth = 700;
         let screenHeight = 500;
 
+
         class GameCharacter {
-            constructor (x,y,width,height,color){
+            constructor (x,y,width,height,color,speed){
                 this.x = x;
                 this.y = y;
                 this.width = width;
                 this.height = height
                 this.color = color;
+                this.speed = speed;
+                this.ySpeed = speed;
+                this.xSpeed = speed;
+            }
+            // methods
+            moveVert() {
+                if (this.y > screenHeight - this.height) {
+                    this.ySpeed = -this.speed;
+                }
+                else if (this.y < 0) {
+                    this.ySpeed = this.speed;
+                } 
+                this.y += this.ySpeed;
+            }
+            moveHoriz() {
+                if (this.x > screenWidth - this.width) {
+                    this.xSpeed = -this.speed;
+                }
+                else if (this.x < 0) {
+                    this.xSpeed = this.speed;
+                } 
+                this.x += this.xSpeed;
             }
         }
 
-        var rectangle = new GameCharacter(50,50,50,50,"rgb(0,0,255)");
+        var rectangle = new GameCharacter(50,50,50,50,"rgb(0,0,255)",2);
+        
+        // array of enemies
+        var enemies = [
+            new GameCharacter(200,50,50,50,"rgb(0,0,255)",2),
+            new GameCharacter(450,screenHeight-100,50,50,"rgb(0,0,255)",2),
+            new GameCharacter(screenWidth-100,50,50,50,"rgb(0,0,255)",2),
+        ];
+        
+
+        var update = function () {
+            enemies[0].moveVert();
+            enemies[0].moveHoriz();
+        }
 
         var draw = function() {
             // clear canvas
             ctx.clearRect(0,0,screenWidth,screenHeight);
-            // fill canvas
-            ctx.fillStyle = rectangle.color;
-            ctx.fillRect(rectangle.x,rectangle.y,rectangle.width,rectangle.height)
+
+            // draw enemies
+            enemies.forEach(
+                function(element) {
+                 // fill canvas
+                ctx.fillStyle = element.color;
+                ctx.fillRect(element.x,element.y,element.width,element.height)
+                }
+            );
         }
 
+
         var step = function() {
+            update();
             draw();
             window.requestAnimationFrame(step);
         }
